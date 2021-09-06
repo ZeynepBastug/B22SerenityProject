@@ -54,4 +54,6 @@ public class SpartanAdminGetTest {
         Ensure.that("Id is 15", vRes -> vRes.body("id", is(15)));
     }
 
+
+
 }

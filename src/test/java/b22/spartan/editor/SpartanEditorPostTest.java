@@ -1,29 +1,17 @@
 package b22.spartan.editor;
 
-import io.restassured.filter.log.LogDetail;
+import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
-import io.restassured.response.ValidatableResponse;
-import io.restassured.specification.RequestSpecification;
-import io.restassured.specification.ResponseSpecification;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import utilities.SpartanNewBase;
-
-import io.restassured.http.ContentType;
 import net.serenitybdd.junit5.SerenityTest;
 import net.serenitybdd.rest.Ensure;
-import net.serenitybdd.rest.SerenityRest;
-import org.junit.jupiter.api.BeforeAll;
 import utilities.SpartanUtil;
-
 import java.util.HashMap;
 import java.util.Map;
-
-import static io.restassured.RestAssured.baseURI;
-import static io.restassured.RestAssured.*;
 import static net.serenitybdd.rest.SerenityRest.lastResponse;
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static net.serenitybdd.rest.SerenityRest.given;
 
@@ -77,7 +65,7 @@ public class SpartanEditorPostTest extends SpartanNewBase {
 
     @ParameterizedTest(name = "New Spartan {index} - name: {0}")
     @CsvFileSource(resources = "/SpartanData.csv", numLinesToSkip = 1)
-    public void postSpartanWithCsv(String name, String gender,int phone){
+    public void postSpartanWithCsv(String name, String gender,long phone){
 
         System.out.println("name = " + name);
         System.out.println("gender = " + gender);
@@ -86,12 +74,7 @@ public class SpartanEditorPostTest extends SpartanNewBase {
         Map<String, Object> mapData = new HashMap<>();
         mapData.put("name", name);
         mapData.put("gender", gender);
-        mapData.put("pgone", phone);
-
-
+        mapData.put("phone", phone);
     }
-
-
-
 
 }
